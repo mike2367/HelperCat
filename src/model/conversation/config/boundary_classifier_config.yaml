@@ -1,0 +1,6 @@
+enabled: true
+classifier_model: qwen-base
+max_tokens: 64
+temperature: 0.0
+top_p: 1.0
+classifier_prompt_path: src/model/prompt_templates/boundary_classifier.md

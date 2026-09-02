@@ -1,0 +1,32 @@
+python_bin: python3
+api_key: your_own_local_api_key
+model_name: HelperCat
+base_model_name: qwen-base
+
+paths:
+  conversation_config: src/model/conversation/config/conversation_config.yaml
+  adapter_dir: your_own_adapter_dir
+  wsl_base_model_dir: your_own_wsl_base_model_dir
+  wsl_adapter_dir: your_own_wsl_adapter_dir
+  compose_file: src/server/docker-compose.yml
+  log_dir: src/server/logs
+
+ports:
+  open_webui: 18201
+  memory_proxy: 18202
+  vllm: 18203
+
+hosts:
+  vllm: 0.0.0.0
+  memory_proxy: 0.0.0.0
+
+vllm:
+  max_model_len: 8192
+  gpu_memory_utilization: 0.86
+  quantization: bitsandbytes
+  load_format: bitsandbytes
+  enforce_eager: false
+  env:
+    VLLM_USE_FLASHINFER_SAMPLER: "0"
+    VLLM_USE_V2_MODEL_RUNNER: "0"
+    VLLM_ENABLE_V1_MULTIPROCESSING: "0"

@@ -1,0 +1,31 @@
+[project]
+name = "helpercat"
+version = "0.1.0"
+description = "Local OpenAI-compatible conversational agent with a cat-tone LoRA renderer."
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+serve = [
+    "redis>=5.0",
+]
+rag = [
+    "numpy>=1.26",
+    "torch>=2.1",
+    "transformers>=4.40",
+]
+train = [
+    "numpy>=1.26",
+    "torch>=2.1",
+    "transformers>=4.40",
+    "peft>=0.10",
+    "tqdm>=4.66",
+]
+dev = [
+    "pytest>=7.4",
+]
+
+[tool.uv]
+package = false

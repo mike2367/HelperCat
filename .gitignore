@@ -1,1 +1,12 @@
 __pycache__
+.pytest_cache/
+logs/
+output/
+db/
+versions/
+*.log
+*.key
+*.db
+*.pt
+*.safetensors
+.venv/

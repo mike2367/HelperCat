@@ -1,0 +1,48 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:v0.10.2
+    container_name: helpercat-webui-18201
+    restart: "no"
+    environment:
+      WEBUI_NAME: HelperCat
+      WEBUI_AUTH: "True"
+      ENABLE_SIGNUP: "True"
+      ENABLE_PERSISTENT_CONFIG: "False"
+      DEFAULT_USER_ROLE: user
+      ENABLE_OPENAI_API: "True"
+      ENABLE_OLLAMA_API: "False"
+      OLLAMA_BASE_URL: http://host.docker.internal:18202
+      OLLAMA_BASE_URLS: http://host.docker.internal:18202
+      OPENAI_API_BASE_URLS: http://host.docker.internal:18202/v1
+      OPENAI_API_KEYS: your_own_local_api_key
+      OPENAI_API_CONFIGS: '{"0":{"headers":{"X-Cat-WebUI-Chat-Id":"{{CHAT_ID}}","X-Cat-WebUI-Message-Id":"{{MESSAGE_ID}}"}}}'
+      ENABLE_FORWARD_USER_INFO_HEADERS: "True"
+      DEFAULT_MODELS: HelperCat
+      DEFAULT_MODEL_METADATA: '{"capabilities":{"file_context":false,"vision":false,"file_upload":false,"web_search":false,"image_generation":false,"code_interpreter":false,"terminal":false,"citations":false,"status_updates":true,"builtin_tools":false,"memory":false}}'
+      ENABLE_CODE_EXECUTION: "False"
+      ENABLE_CODE_INTERPRETER: "False"
+      ENABLE_IMAGE_GENERATION: "False"
+      ENABLE_IMAGE_EDIT: "False"
+      USER_PERMISSIONS_CHAT_FILE_UPLOAD: "False"
+      RAG_EMBEDDING_ENGINE: openai
+      RAG_OPENAI_API_BASE_URL: http://host.docker.internal:18202/v1
+      RAG_OPENAI_API_KEY: your_own_local_api_key
+      RAG_EMBEDDING_MODEL: HelperCat
+      ENABLE_RAG_HYBRID_SEARCH: "False"
+      ENABLE_WEB_SEARCH: "False"
+      ENABLE_SEARCH_QUERY_GENERATION: "False"
+      ENABLE_FOLLOW_UP_GENERATION: "False"
+      ENABLE_AUTOCOMPLETE_GENERATION: "False"
+      ENABLE_TAGS_GENERATION: "False"
+      ENABLE_TITLE_GENERATION: "False"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - helpercat-official-webui-data:/app/backend/data
+      - ./resources/cat-avatar.png:/app/backend/open_webui/static/logo.png:ro
+      - ./resources/cat-avatar.png:/app/backend/open_webui/static/favicon.png:ro
+    ports:
+      - "18201:8080"
+
+volumes:
+  helpercat-official-webui-data:

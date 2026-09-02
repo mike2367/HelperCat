@@ -1,0 +1,21 @@
+memory_config_path: src/model/memory/config/memory_config.yaml
+boundary_config_path: src/model/conversation/config/boundary_classifier_config.yaml
+kairos_config_path: src/model/memory/config/kairos_config.yaml
+retrieval_config_path: src/model/memory/config/retrieval_config.yaml
+deepseek_config_path: src/model/conversation/config/reasoner_deepseek_config.yaml
+deepseek_examples:
+  example_paths:
+  - data/deepseek_examples/deepseek_followup_examples.jsonl
+  - data/deepseek_examples/deepseek_uncertainty_examples.jsonl
+  - data/deepseek_examples/deepseek_health_reasoning_examples.jsonl
+  - data/deepseek_examples/deepseek_scope_examples.jsonl
+  - data/deepseek_examples/deepseek_safety_examples.jsonl
+  - data/deepseek_examples/deepseek_natural_chinese_examples.jsonl
+  - data/deepseek_examples/deepseek_turn_taking_examples.jsonl
+renderer:
+  prompt_path: src/model/prompt_templates/cat_tone_renderer.md
+  model: HelperCat
+  max_tokens: 3000
+  temperature: 0.0
+  top_p: 0.8
+  repetition_penalty: 1.0

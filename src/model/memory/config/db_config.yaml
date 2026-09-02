@@ -1,0 +1,37 @@
+redis:
+  host: wsl_gateway
+  port: 6379
+  password: null
+  key_prefix: cat
+  auto_start: true
+  allow_json_fallback: false
+  startup_timeout_seconds: 5
+  data_dir: ${HELPERCAT_DATA_DIR}/redis
+  appendonly: true
+  save: ''
+  server_executable: C:/Program Files/Redis-x64-5.0.14.1/redis-server.exe
+  encryption:
+    enabled: true
+    key_file: ${HELPERCAT_DATA_DIR}/user_data_aes.key
+  dbs:
+    user_memory: 1
+    model_ops: 2
+  database_info:
+    user_memory:
+      db: 1
+      role: user profile, durable facts, conversation, profile audit, and KAIROS candidates
+      key_patterns:
+      - cat:User:{username}:profile
+      - cat:User:{username}:facts
+      - cat:User:{username}:profile:audit
+      - cat:User:{username}:conversation:user
+      - cat:User:{username}:conversation:assistant
+      - cat:User:{username}:kairos:candidate:{candidate_type}
+    model_ops:
+      db: 2
+      role: request-correlated model/server lifecycle events, debug events, and errors
+      key_patterns:
+      - cat:model_ops:event:{event_type}
+      - cat:model_ops:category:{category}:{event_type}
+      - cat:model_ops:request:{request_id}:timeline
+      - cat:model_ops:request:{request_id}:stage:{event_type}

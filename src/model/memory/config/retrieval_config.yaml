@@ -1,0 +1,5 @@
+enabled: true
+index_dir: data/retrieval/biomedical_rag
+query_encoder_path: E:/local_models/MedCPT-Query-Encoder
+top_k: 4
+max_chars: 3000

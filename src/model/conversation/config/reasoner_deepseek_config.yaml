@@ -1,0 +1,18 @@
+model:
+  base_url: https://api.deepseek.com/chat/completions
+  base_url_env: CLOUD_BACKBONE_BASE_URL
+  pinned_ip: null
+  api_key_env: CLOUD_BACKBONE_API_KEY
+  model_env: CLOUD_BACKBONE_MODEL
+  extra_body_env: CLOUD_BACKBONE_EXTRA_BODY_JSON
+  user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+    like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0
+  name: deepseek-v4-flash
+  temperature: 0.0
+  top_p: 1.0
+  reasoning_effort: low
+  max_tokens: 2000
+  extra_body:
+    thinking:
+      type: disabled
+  system_path: src/model/prompt_templates/deepseek_backend.md

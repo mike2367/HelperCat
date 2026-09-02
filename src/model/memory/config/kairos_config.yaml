@@ -1,0 +1,10 @@
+kairos:
+  enabled: true
+  prompt_path: src/model/prompt_templates/kairos_reflection.md
+  input_cache_dir: output/input_cache
+  max_cache_age_hours: 336
+  max_reflection_chars: 24000
+  max_output_tokens: 1600
+  max_candidates: 10
+  idle_seconds: 300
+  watch_interval_seconds: 120

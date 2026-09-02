@@ -1,0 +1,9 @@
+db_config_path: src/model/memory/config/db_config.yaml
+memory:
+  enabled: true
+  user_id: your_own_user_id
+  max_events: 5000
+  max_model_events: 10000
+  max_context_events: 50
+  max_context_event_chars: 1800
+  max_context_event_item_chars: 500
