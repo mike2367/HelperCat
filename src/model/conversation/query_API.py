@@ -309,7 +309,6 @@ def _prepare_cloud_request(body, runtime, boundary=None, backend_url=None, backe
 
 def ask_cloud_backend(body, runtime, boundary=None, backend_url=None, backend_api_key="your_own_local_api_key"):
     METRICS["requests_total"] += 1
-    runtime = _runtime_for_request(runtime, body)
     prepared = _prepare_cloud_request(body, runtime, boundary, backend_url, backend_api_key)
     user_text = prepared["user_text"]
     write_memory = prepared["write_memory"]
@@ -372,7 +371,6 @@ def _webui_status_event(body, description, done, hidden=False):
 
 
 def _stream_chat_completion(body, runtime, backend_url, backend_api_key, model_name):
-    runtime = _runtime_for_request(runtime, body)
     token: Token = CURRENT_REQUEST_ID.set(uuid.uuid4().hex)
     request_id = f"chatcmpl-{uuid.uuid4().hex}"
     created = int(time.time())
